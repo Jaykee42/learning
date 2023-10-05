@@ -20,6 +20,7 @@ void printMatrix() {
 }
 
 int main () {
+    printf("Test!");
     createMatrix();
     printMatrix();
     return 0;
