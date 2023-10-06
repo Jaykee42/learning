@@ -20,7 +20,7 @@ void printMatrix() {
 }
 
 int main () {
-    printf("Test! from laptop2. If you see that so you are done");
+    printf("Adel the best girl in the world");
     createMatrix();
     printMatrix();
     return 0;
