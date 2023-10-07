@@ -8,6 +8,13 @@ int createMatrix(){
     for (y = 0; y <= 2; y++) matrix[i][y] = ' '; //create game matrix
 }
 
+int playerInput() {
+    int x, y;
+    printf("Please, input your turn (x, y): \n");
+    scanf("%d, %d", &x, &y);
+    matrix[x][y] = 'x';    
+}
+
 void printMatrix() {
     int i;
 
@@ -20,8 +27,10 @@ void printMatrix() {
 }
 
 int main () {
-    printf("Adel the best girl in the world");
+    printf("This is the game. Lets start!");
     createMatrix();
+    printMatrix();
+    playerInput();
     printMatrix();
     return 0;
 }
