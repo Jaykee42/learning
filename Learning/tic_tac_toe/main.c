@@ -12,7 +12,7 @@ int playerInput() {
     int x, y;
     printf("Please, input your turn (x, y): \n");
     scanf("%d, %d", &x, &y);
-    matrix[x][y] = 'x';    
+    if matrix[x][y] != ' '     
 }
 
 void printMatrix() {
