@@ -12,7 +12,10 @@ int playerInput() {
     int x, y;
     printf("Please, input your turn (x, y): \n");
     scanf("%d, %d", &x, &y);
-    if matrix[x][y] != ' '     
+    if (matrix[x][y] != ' ') { 
+    printf("Error, chose another cell\n");
+  }
+  else matrix[x][y] = 'x';
 }
 
 void printMatrix() {
@@ -27,7 +30,7 @@ void printMatrix() {
 }
 
 int main () {
-    printf("This is the game. Lets start!");
+    printf("This is the game. Lets start!\n");
     createMatrix();
     printMatrix();
     playerInput();
