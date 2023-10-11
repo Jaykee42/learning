@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 *.exe
-/.vscode/
+.vscode/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
