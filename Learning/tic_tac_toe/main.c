@@ -29,6 +29,15 @@ void printMatrix() {
     printf("\n");
 }
 
+
+int compMove() {
+  int i,j;
+  for (i = 0; i <= 2; i++) 
+    for (j = 0; j <= 2; j++) 
+      if (matrix[i][j] != ' ') printf("There is no space to move"); 
+  
+}
+
 int main () {
     printf("This is the game. Lets start!\n");
     createMatrix();
