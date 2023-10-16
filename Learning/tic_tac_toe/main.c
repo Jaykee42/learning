@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 char matrix[2][2];
-
+int game_status = 0;
 int createMatrix(){
     int i, y;
     for (i = 0; i <= 2; i++)
@@ -29,6 +29,13 @@ void printMatrix() {
     printf("\n");
 }
 
+int winCheck () {
+  int i;
+  for (i=0; i<=2; i++) {
+    if (matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2])
+    printf("Test");
+  }
+}
 
 int compMove() {
   int i,j;
@@ -39,10 +46,14 @@ int compMove() {
 }
 
 int main () {
+  
+  while (game_status == 0) {
     printf("This is the game. Lets start!\n");
     createMatrix();
     printMatrix();
     playerInput();
     printMatrix();
+    compMove();
+  }
     return 0;
 }
