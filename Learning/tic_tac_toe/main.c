@@ -21,7 +21,7 @@ void player_input(void) {
   else matrix[x][y] = 'X';
 }
 
-void printMatrix() {
+void print_matrix() {
     int i;
 
     for (i=0; i < 3; i++) {
@@ -31,7 +31,7 @@ void printMatrix() {
     printf("\n");
 }
 
-char winCheck (void) {
+char win_check (void) {
   int i;
   for (i = 0; i < 3; i++) 
     if (matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2])
@@ -50,7 +50,7 @@ char winCheck (void) {
   return ' ';
 }
 
-void compMove(void) {
+void comp_move(void) {
   int i,j;
   for (i = 0; i < 3; i++){ 
     for (j = 0; j < 3; j++) 
@@ -66,12 +66,24 @@ void compMove(void) {
 }
 
 int main () {
-  
-  
-    printf("This is the game. Lets start!\n");
+    char done;
+
+    printf("This is the game tic tac toe! Lets start!\n");
+
+    done = ' ';
     create_matrix();
-    printMatrix();
-    player_input();
-    printMatrix();
-    compMove();
+
+    do {
+      print_matrix();
+      player_input();
+      done = win_check();
+      if (done != ' ') break;
+      comp_move();
+      done = win_check();
+    } while (done == ' ');
+
+    if (done == 'X') printf("You win!\n");
+    else printf("Computer win :(\n");
+    print_matrix();
+    
 }
