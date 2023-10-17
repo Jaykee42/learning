@@ -1,59 +1,77 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-char matrix[2][2];
-int game_status = 0;
-int createMatrix(){
-    int i, y;
-    for (i = 0; i <= 2; i++)
-    for (y = 0; y <= 2; y++) matrix[i][y] = ' '; //create game matrix
+char matrix[3][3];
+
+
+void create_matrix(void){
+    int i, j;
+    for (i = 0; i < 3; i++)
+    for (j = 0; j < 3; j++) matrix[i][j] = ' '; //create game matrix
 }
 
-int playerInput() {
+void player_input(void) {
     int x, y;
     printf("Please, input your turn (x, y): \n");
-    scanf("%d, %d", &x, &y);
+    scanf("%d%*c %d", &x, &y);
     if (matrix[x][y] != ' ') { 
     printf("Error, chose another cell\n");
+    player_input();
   }
-  else matrix[x][y] = 'x';
+  else matrix[x][y] = 'X';
 }
 
 void printMatrix() {
     int i;
 
-    for (i=0; i <= 2; i++) {
+    for (i=0; i < 3; i++) {
     printf(" %c | %c | %c ", matrix[i][0], matrix[i][1], matrix[i][2]);
         if (i!=2) printf("\n---|---|---\n");
-        matrix[1][1] = 'x'; 
     }
     printf("\n");
 }
 
-int winCheck () {
+char winCheck (void) {
   int i;
-  for (i=0; i<=2; i++) {
+  for (i = 0; i < 3; i++) 
     if (matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2])
-    printf("Test");
-  }
+      return matrix[i][0];
+      
+   for (i = 0; i < 3; i++) 
+    if (matrix[0][i] == matrix[1][i] && matrix[1][i] == matrix[2][i])
+      return matrix[0][i];
+  
+ for (i = 0; i < 3; i++) 
+    if (matrix[0][0] == matrix[1][1] && matrix[1][1] == matrix[2][2])
+      return matrix[0][0];
+   for (i = 0; i < 3; i++) 
+    if (matrix[0][2] == matrix[1][1] && matrix[1][1] == matrix[2][0])
+      return matrix[0][2];
+  return ' ';
 }
 
-int compMove() {
+void compMove(void) {
   int i,j;
-  for (i = 0; i <= 2; i++) 
-    for (j = 0; j <= 2; j++) 
-      if (matrix[i][j] != ' ') printf("There is no space to move"); 
-  
+  for (i = 0; i < 3; i++){ 
+    for (j = 0; j < 3; j++) 
+      if (matrix[i][j] == ' ') break;
+      if (matrix[i][j] == ' ') break;
+  }
+  if (i*j == 9) {
+    printf("Game Over. \n");
+    exit(0);
+  }
+  else
+  matrix[i][j] = 'O';
 }
 
 int main () {
   
-  while (game_status == 0) {
+  
     printf("This is the game. Lets start!\n");
-    createMatrix();
+    create_matrix();
     printMatrix();
-    playerInput();
+    player_input();
     printMatrix();
     compMove();
-  }
-    return 0;
 }
