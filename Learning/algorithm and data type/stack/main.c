@@ -4,6 +4,7 @@
 
 int *pop1, *push1, stack[50];
 
+void push(int i);
 
 int main(){
 
