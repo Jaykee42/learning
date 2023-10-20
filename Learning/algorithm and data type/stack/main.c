@@ -1,19 +1,24 @@
 /*realese stack. main array and two func: pop and push*/
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int *pop1, *push1, stack[50];
+#define SIZE 50
 
-void push(int i);
+int *tos, *p1, stack[SIZE];
 
-int main(){
+int main(void) {
+    int value;
 
-    push1 = stack;
-    push(5);
-    printf("%d ", push1[0]);
+    tos = stack;
+    p1 = stack;
 }
 
 void push(int i) {
-    push1++;
-    *push1 == i;
+
+    p1++;
+    if (p1 == (tos+SIZE)) {
+        printf("Stack overflow.\n");
+    }
+    *p1 = i;
 }
