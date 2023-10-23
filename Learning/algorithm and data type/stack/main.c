@@ -5,6 +5,9 @@
 
 #define SIZE 50
 
+void push(int i);
+int pop(void);
+
 int *tos, *p1, stack[SIZE];
 
 int main(void) {
@@ -12,6 +15,15 @@ int main(void) {
 
     tos = stack;
     p1 = stack;
+
+    do {
+        printf("Insert a number: ");
+        scanf("%d", &value);
+
+        if (value != 0) push(value);
+        else printf("Value on the top is %d\n", pop());
+    } while (value != -1);
+    return 0;
 }
 
 void push(int i) {
@@ -21,4 +33,14 @@ void push(int i) {
         printf("Stack overflow.\n");
     }
     *p1 = i;
+}
+
+int pop(void) {
+
+    if (p1 == tos) {
+        printf("Stack is empty\n");
+        exit(1);
+    }
+    p1--;
+    return *(p1+1);
 }
