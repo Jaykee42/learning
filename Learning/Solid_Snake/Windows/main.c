@@ -1,11 +1,61 @@
 #include <stdio.h>
+#include <conio.h>
 
-int i, wight, height;
-wight = 20;
-height = 20;
+int x, y, width = 10, gameover = 0;
+int height = 20, input_id = 0;
+int x_snake = 4, y_snake = 4;
+
 
 int main() {
-    for (i = 0; i < height; i++) { //draw a field
-        printf("#");
+    
+    while (gameover == 0) {
+        draw();
+        input();
     }
+    
+    
+    return 0;
+}
+void draw() {
+    for (x = 0; x < width; x++) {
+        for (y = 0; y < height; y++)
+            if (x == 0 || x == width - 1 || y == 0 || y == height - 1) {
+                printf("#");
+            }
+            else {if (x == x_snake && y == y_snake) 
+                    printf("0");
+                else
+                    printf(" ");
+            }
+        printf("\n");
+         
+    }
+}
+
+
+void input() {
+    if (kbhit()) {
+        switch (getch())
+        {
+        case 'a':
+            y_snake++;
+            break;
+        case 'd':
+            input_id = 2;
+            break;
+        case 's':
+            input_id = 3;
+            break;
+        case 'w':
+            input_id = 1;
+            break;
+        
+        default:
+            break;
+        }
+    }
+}
+
+void gamelogic() {
+
 }
