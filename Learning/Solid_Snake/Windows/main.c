@@ -38,16 +38,16 @@ void input() {
         switch (getch())
         {
         case 'a':
-            y_snake++;
+            y_snake--;
             break;
         case 'd':
-            input_id = 2;
+            y_snake++;
             break;
         case 's':
-            input_id = 3;
+            x_snake--;
             break;
         case 'w':
-            input_id = 1;
+            x_snake++;
             break;
         
         default:
