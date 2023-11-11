@@ -5,11 +5,20 @@ int main_arr[9][9];
 int create_game() {
     int x,y;
 
-    for (x = 0; x < 9; x++)
-        for (y = 0; y < 9; y++) main_arr[x][y] = 9;
-            printf("%d", main_arr[1][1]);
+    for (x = 0; x < 10; x++)
+        for (y = 0; y < 10; y++) main_arr[x][y] = x;
+        
 }
 
+int print_field() {
+    int x,y;
+    for (x = 0; x < 9; x++) {
+        for (y = 0; y < 9; y++)
+            printf("%d ", main_arr[x][y]);
+        printf("\n");
+    }
+}
 int main() {
     create_game();
+    print_field();
 }
