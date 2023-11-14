@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 
-int x, y, width = 10, gameover = 0;
-int height = 20, input_id = 0;
+int x, y, width = 30, gameover = 0;
+int height = 60, input_id = 0;
 int x_snake = 4, y_snake = 4;
 
 
