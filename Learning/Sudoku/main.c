@@ -1,96 +1,45 @@
-#include<stdio.h>
-#include<conio.h> 
-#include<stdlib.h>
-int main()
-{
-   
-    int i,j,n,s;
-int k,l;
-int value[9][9];
-    int total_row[9];
-    int total_col[9];
-    printf("'enter the inputs of a soduko,and check whether its correct or not'\n");
-printf("\n input no of 'rows x column' \n");
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-    scanf("\n%d",&k);
-    scanf("\t%d",&l);
-   
-   
-   
+#define SIZE 9
 
-   
-    printf("values\n");
-    for(i=0;i<k;i++)
-    {
-   
-        total_row[i]=0;
-        for(j=0;j<l;j++)
-        {
-            scanf("%d",&value[i][j]);
-           
-            total_row[i]=total_row[i]+value[i][j];
-        }
-    }
-   
-   
-for(j=0;j<l;j++)
-    {
-        total_col[j]=0;
-        for(i=0;i<k;i++)
-        {
-           
-            total_col[j]=total_col[j]+value[i][j];
+int main_arr[SIZE][SIZE];
 
+void create_game() {
+    srand(time(NULL));
 
-        }
-    }
+    for (int x = 0; x < SIZE; x++)
+        for (int y = 0; y < SIZE; y++)
+            main_arr[x][y] = rand() % 9 + 1;
+}
 
+void checkunicnumbers(int main_arr[][SIZE]) {
 
-for(i=0;i<k;i++)
-    {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++)
+            for (int k = i + 1; k < SIZE; k++)
+                for (int l = 0; l < SIZE; l++)
+                    if (main_arr[i][j] == main_arr[k][l])
+                    {
+                        main_arr[k][l] = (main_arr[i][j] % 9) + 1;
+                    }
+                    
+    }     
+}
+
+void print_field() {
+    int x, y;
+    for (x = 0; x < SIZE; x++) {
+        for (y = 0; y < SIZE; y++)
+            printf("%d ", main_arr[x][y]);
         printf("\n");
-        for(j=0;j<l;j++)
-        {
-            printf(" \t %d ",value[i][j]);
-        }
-    }
-
-
-
-s=((k*(k+1))/2);
-for(n=0;n<k;n++)
-{
-    if((total_col[n])!=s)
-   
-       
-    printf("\n incorrect i/p's col_%d ",n+1 );
-   
-    else if((total_row[n])!=s)
-   
-    printf(" incorrect i/p's row_%d ",n+1);
-    else if(total_row[n] && s && total_col[n])
-   
-    printf("\n correct i/p for both %d  row and col ",n+1);
-   
-    else if(total_row[n] && s )
-   
-    printf("\n correct i/p for %d  row  ",n+1);
-    else if(s && total_col[n])
-   
-    printf("\n correct i/p for %d  col ",n+1);
-   
-   
-    else
-    {
     }
 }
-//fflush(stdin);
-getch();
-getch();
-getch();
-getch();
-getch();
-getch();
-getch();
-getch();
+
+int main() {
+    create_game();
+    checkunicnumbers(main_arr);
+    print_field();
+    return 0;
 }
