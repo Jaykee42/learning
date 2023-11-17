@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-// This is test message
+
 
 #define SIZE 9
 
@@ -15,7 +15,7 @@ void create_game() {
             main_arr[x][y] = rand() % 9 + 1;
 }
 
-void numberCheck(int main_arr[][SIZE], int rows, int columns, int checknum) {
+int numberCheck(int main_arr[][SIZE], int rows, int columns, int checknum) {
     int i,j;
     int rowStart = (rows/3) * 3;
     int columnStart = (columns/3) * 3;
@@ -25,7 +25,7 @@ void numberCheck(int main_arr[][SIZE], int rows, int columns, int checknum) {
         if (main_arr[i][columns] == checknum) return 0;
         if (main_arr[rowStart + (i%3)][columnStart + (i/3)] == checknum) return 0;
     }
-    return 1
+    return 1;
 
 }
 
@@ -40,7 +40,12 @@ void print_field() {
 
 int main() {
     create_game();
-    checkunicnumbers(main_arr);
+    for (int i = 0; i < SIZE; i++) {
+        numberCheck(main_arr, SIZE, SIZE, i);
+        if (numberCheck) {
+            printf("\nError ");
+        }
+    }
     print_field();
     return 0;
 }
