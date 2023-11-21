@@ -10,10 +10,11 @@
 
 #include <stdio.h>
 
-int testArray[5] = {2,3,5,1,6};
+int testArray[] = {2,3,5,1,6,7,9,0};
+int *p = testArray;
 
 int main() {
    
-    int arrayMax = sizeof(testArray) / sizeof(testArray[0]);
+    int arrayMax = sizeof(p) / sizeof(p[0]);
     printf("%d", arrayMax);
 }
