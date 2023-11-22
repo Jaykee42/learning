@@ -16,5 +16,7 @@ int *p = testArray;
 int main() {
    
     int arrayMax = sizeof(p) / sizeof(p[0]);
-    printf("%d", arrayMax);
+    for (int i = 0; i < 8; i++) {
+        printf("%d", p[i]);
+    }
 }
