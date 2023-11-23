@@ -1,11 +1,13 @@
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
-#include <stdio.h>
-int* twoSum(int* nums, int numsSize, int target) {
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
 
-    int *array = malloc(2*sizeof(int) );
-    for (int i=0; i<numsSize;i++)
+*returnSize=2;// der zu returnende array hat 2 elemente
+
+int *array = malloc(2*sizeof(int) ); // Output array max 2 elemente
+
+for (int i=0; i<numsSize;i++)
 {
     for( int j=1+i;j<numsSize;j++)
     {
@@ -20,10 +22,4 @@ int* twoSum(int* nums, int numsSize, int target) {
 }
 return -1;
 
-}
-
-int main() {
-    int cock[] = {2,7,11,15};
-    int test = twoSum(cock, 4, 9);
-    printf(test);
 }
