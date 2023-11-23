@@ -17,6 +17,9 @@ int main() {
    
     int arrayMax = sizeof(p) / sizeof(p[0]);
     for (int i = 0; i < 8; i++) {
-        printf("%d", p[i]);
+        if (p[i] + p[++i] == 8) {
+            printf("%d", 0);
+        }
+        else printf("%d", 1);
     }
 }
