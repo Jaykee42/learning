@@ -1,19 +1,16 @@
 #include <stdio.h>
 
-int bubleSort(int arr[]) {
-
-    for (int i = 0; i < 6; i++) {
-        if (arr[i] > arr[i++]) {
-            arr[i] = arr[i++];
-            arr[i++] = arr[i];
-        }
-    }
-    return arr;
+int swap (int* first, int* second) {
+    int tmp = *first;
+    *first = *second;
+    *second = tmp;
 }
 
 int main() {
-    int test_arr[5] = {4,3,5,7,8};
+    int fx = 3;
+    int sy = 76;
 
-    int output = bubleSort(test_arr);
-    printf(output);
+    swap(&fx, &sy);
+
+    printf("First now: %d, second now %d", fx, sy);
 }
