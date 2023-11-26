@@ -1,45 +1,54 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void swap (int* first, int* second) {
+int testarr[10000];
+int n;
+
+void swap(int* first, int* second) {
     int tmp = *first;
     *first = *second;
     *second = tmp;
 }
 
-void bubbleSort(int arr[], int n) {
-    
-    bool swappted;
+int inputArr() {
+    printf("Enter the size of arr:\n");
+    scanf("%d", &n);
+    printf("Enter each element of arr: \n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &testarr[i]);
+    }
+    return n;
+}
+
+void bubbleSort() {
+    bool swapped;
 
     for (int i = 0; i < n - 1; i++) {
-        swappted = false;
+        swapped = false;
         for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                swap(&arr[j], &arr[j + 1]);
-                swappted = true;
+            if (testarr[j] > testarr[j + 1]) {
+                swap(&testarr[j], &testarr[j + 1]);
+                swapped = true;
             }
-            
         }
-        if (swappted == false)
-            break; 
+        if (!swapped)
+            break;
     }
 }
 
-void printArr(int arr[], int n) {
-
-    for ( int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
+void printArr() {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", testarr[i]);
     }
 }
 
 int main() {
-    int testarr[] = {676,445,7878,445444,787878,7676334,23,5554,234,111,23,4433442,2342,342,34545,4346,45};
-    int n = sizeof(testarr) / sizeof(testarr[0]);
+    inputArr();
     printf("Unsorted arr: \n");
-    printArr(testarr, n);
-    bubbleSort(testarr, n);
+    printArr();
+    bubbleSort();
     printf("\nSorted arr: \n");
-    printArr(testarr, n);
+    printArr();
 
     return 0;
 }
