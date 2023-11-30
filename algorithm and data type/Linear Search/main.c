@@ -7,7 +7,7 @@ void testCreate(int* arr, int* size) {
     srand(time(NULL));
 
     for (int i = 0; i < size; i++) {
-        arr[i] = rand();
+        arr[i] = rand() % 1000 + 1;
     }
 
 }
@@ -37,5 +37,8 @@ int main() {
     printf("Enter the number to find: \n");
     scanf("%d", &value);
     linearSearh(tesarr, value);
+    for (int i = 0; i < n; i++ ) {
+        printf("%d ", tesarr[i]);
+    }
     scanf("%d", n);
 }
