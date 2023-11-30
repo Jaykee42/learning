@@ -1,6 +1,16 @@
 #include <stdio.h>
+#include <time.h>
 
-int tesarr[10] = {5,7,3,34,65,78,2524,1,65,897};
+int tesarr[];
+
+void testCreate(int* arr, int* size) {
+    srand(time(NULL));
+
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand();
+    }
+
+}
 
 void linearSearh(int arr[], int to_search) {
     int founded = 0;
@@ -21,6 +31,9 @@ void linearSearh(int arr[], int to_search) {
 
 int main() {
     int value, n;
+    printf("Enter an array size: \n");
+    scanf("%d", &n);
+    testCreate(tesarr, n);
     printf("Enter the number to find: \n");
     scanf("%d", &value);
     linearSearh(tesarr, value);
