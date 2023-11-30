@@ -3,7 +3,7 @@
 
 int tesarr[];
 
-void testCreate(int* arr, int* size) {
+void testCreate(int arr[], int size) {
     srand(time(NULL));
 
     for (int i = 0; i < size; i++) {
@@ -12,15 +12,16 @@ void testCreate(int* arr, int* size) {
 
 }
 
-void linearSearh(int arr[], int to_search) {
+void linearSearh(int arr[], int size, int to_search) {
     int founded = 0;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < size; i++) {
         if (arr[i] == to_search) {
             printf("Value is founded:\n");
             printf("%d ", arr[i-1]);
             printf("[%d] ", arr[i]);
             printf("%d \n", arr[i+1]);
             founded = 1;
+            break;
         }
         
     }
@@ -36,7 +37,7 @@ int main() {
     testCreate(tesarr, n);
     printf("Enter the number to find: \n");
     scanf("%d", &value);
-    linearSearh(tesarr, value);
+    linearSearh(tesarr, n, value);
     for (int i = 0; i < n; i++ ) {
         printf("%d ", tesarr[i]);
     }
