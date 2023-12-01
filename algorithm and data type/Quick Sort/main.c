@@ -1,6 +1,16 @@
 #include <stdio.h>
+#include <time.h>
 
-int testarr[1000] = {67, 556, 345, 77, 989, 56, 33, 456, 23, 656565, 9898, 99, 6778, 7, 55656};
+int testarr[];
+
+void testCreate(int arr[], int size) {
+    srand(time(NULL));
+
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 1000 + 1;
+    }
+
+}
 
 void swap(int* a, int* b) {
     int tmp = *a;
@@ -31,14 +41,22 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-int main() {
-    int n = sizeof(testarr) / sizeof(testarr[0]);
-
-    quickSort(testarr, 0, n - 1);
-
-    for (int i = 0; i < n; i++) {
-        printf("%d ", testarr[i]);
+void printArr(int* arr, int n) {
+    for (int i = 0; i , n; i++) {
+        printf("%d ", arr[i]);
     }
+}
+
+int main() {
+    int n;
+    printf("Enter a size of arr: \n");
+    scanf("%d", &n);
+    testCreate(testarr, n);
+    printf("Unsorted arr: \n");
+    printArr(testarr, n);
+    quickSort(testarr, 0, n - 1);
+    printf("Sorted arr: \n");
+    printArr(testarr, n);
 
     return 0;
 }
