@@ -42,7 +42,7 @@ void quickSort(int arr[], int low, int high) {
 }
 
 void printArr(int* arr, int n) {
-    for (int i = 0; i , n; i++) {
+    for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
 }
@@ -55,7 +55,7 @@ int main() {
     printf("Unsorted arr: \n");
     printArr(testarr, n);
     quickSort(testarr, 0, n - 1);
-    printf("Sorted arr: \n");
+    printf("\nSorted arr: \n");
     printArr(testarr, n);
 
     return 0;
