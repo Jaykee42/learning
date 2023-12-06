@@ -1,21 +1,6 @@
 #include <stdio.h>
 
 int task_index[100];
-char choice;
-
-void action() {
-    char input;
-    scanf("%c", &input);
-    switch (input)
-    {
-    case 'a':
-        choice = 'a';
-        break;
-    
-    default:
-        break;
-    }
-}
 
 void addTask() {
     task_index[0] = 1;
@@ -30,10 +15,31 @@ void showTasks() {
 }
 
 int main() {
+    char input;
 
-    showTasks();
-    addTask();
-    showTasks();
-    removeTask();
-    showTasks();
+    while (input != '0')
+    {   printf("Enter the action: ");
+        scanf(" %c", &input);  
+        switch (input) {
+        case 'a':
+            showTasks();
+            addTask();
+            showTasks();
+            break;
+        case 's':
+            showTasks();
+            removeTask();
+            showTasks();
+            break;
+        case 'd':
+            break;
+        case '0':
+            break;
+        default:
+            break;
+        }
+
+    }
+    
+    
 }

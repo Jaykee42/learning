@@ -26,7 +26,7 @@ void linearSearh(int arr[], int size, int to_search) {
         
     }
     if (!founded) {
-        printf("Not founded.\n.");
+        printf("Not founded.\n");
     }
 }
 
