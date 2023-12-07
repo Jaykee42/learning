@@ -1,41 +1,60 @@
 #include <stdio.h>
 
-int task_index[100];
-int task_adress;
+#define MAX_TASKS 10000
+
+int task_index[MAX_TASKS];
+int task_count = 0;
 
 void addTask() {
-    task_index[task_adress] = 1;
-    task_adress++;
+    if (task_count < MAX_TASKS) {
+        task_index[task_count] = 1;
+        task_count++;
+        printf("Task added!\n");
+    }
+    else {
+        printf("task limit reached. Can't add more tasks.\n");
+    }
+    
 }
 
 void removeTask() {
-    task_index[task_adress] = 0;
-    task_adress--;
+    if (task_count > 0) {
+        task_index[task_count] = 0;
+        task_count--;
+        printf("Task removed.\n");
+    }
+    else {
+        printf("No tasks to remove.\n");
+    }
+    
+
 }
 
 void showTasks() {
-    printf("%d\n%d\n%d\n", task_index[0], task_index[1], task_index[2]);
+    
+    for (int i = 0; i < task_count; i++) {
+        printf("%d\n", task_index[i]);
+    }
 }
 
 int main() {
     char input;
-
+    
     while (input != '0')
-    {   printf("Enter the action: ");
+    {
+        printf("Enter the action: ");
         scanf(" %c", &input);  
         switch (input) {
         case 'a':
-            showTasks();
             addTask();
             showTasks();
             break;
         case 's':
-            showTasks();
             removeTask();
             showTasks();
             break;
         case 'd':
-        showTasks();
+            showTasks();
             break;
         case '0':
             break;
@@ -44,6 +63,5 @@ int main() {
         }
 
     }
-    
-    
+     
 }
