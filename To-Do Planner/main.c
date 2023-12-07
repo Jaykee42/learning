@@ -1,17 +1,20 @@
 #include <stdio.h>
 
 int task_index[100];
+int task_adress;
 
 void addTask() {
-    task_index[0] = 1;
+    task_index[task_adress] = 1;
+    task_adress++;
 }
 
 void removeTask() {
-    task_index[0] = 0;
+    task_index[task_adress] = 0;
+    task_adress--;
 }
 
 void showTasks() {
-    printf("%d\n", task_index[0]);
+    printf("%d\n%d\n%d\n", task_index[0], task_index[1], task_index[2]);
 }
 
 int main() {
@@ -32,6 +35,7 @@ int main() {
             showTasks();
             break;
         case 'd':
+        showTasks();
             break;
         case '0':
             break;
