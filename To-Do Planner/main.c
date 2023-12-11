@@ -46,7 +46,7 @@ int main() {
     char input;
 
     while (input != '0') {
-        printf("Enter the action (a - add task; s - remove, d - show tasks, 0 - exit): ");
+        printf("Enter the action: \na - add task;\ns - remove;\nd - show tasks;\n0 - exit. ");
         scanf(" %c", &input);
         switch (input) {
         case 'a':
