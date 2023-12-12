@@ -8,14 +8,14 @@ struct task {
 };
 
 struct task task_array[MAX_TASKS];
-int task_count = 0;
+int task_index = 0;
 
 void addTask() {
-    if (task_count < MAX_TASKS) {
+    if (task_index < MAX_TASKS) {
         printf("Enter new task name: \n");
-        scanf("%s", task_array[task_count].name);
-        task_array[task_count].index = task_count + 1;
-        task_count++;
+        scanf("%s", task_array[task_index].name);
+        task_array[task_index].index = task_index + 1;
+        task_index++;
         printf("Task added!\n");
     } else {
         printf("Task limit reached. Can't add more tasks.\n");
@@ -23,8 +23,8 @@ void addTask() {
 }
 
 void removeTask() {
-    if (task_count > 0) {
-        task_count--;
+    if (task_index > 0) {
+        task_index--;
         printf("Task removed.\n");
     } else {
         printf("No tasks to remove.\n");
@@ -32,11 +32,11 @@ void removeTask() {
 }
 
 void showTasks() {
-    if (task_count == 0) {
+    if (task_index == 0) {
         printf("Task list is empty\n");
     } else {
         printf("List of tasks:\n");
-        for (int i = 0; i < task_count; i++) {
+        for (int i = 0; i < task_index; i++) {
             printf("Task %d: %s\n", task_array[i].index, task_array[i].name);
         }
     }
