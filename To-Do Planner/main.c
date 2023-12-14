@@ -22,6 +22,12 @@ void addTask() {
     }
 }
 
+void rebuildTaskArray() {
+
+    int arr[MAX_TASKS];
+    
+}
+
 void removeTask() {
     if (task_index > 0) {
         task_index--;
