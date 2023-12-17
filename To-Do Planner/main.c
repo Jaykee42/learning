@@ -22,24 +22,30 @@ void addTask() {
     }
 }
 
-void rebuildTaskArray(int arr[], int remove_index) {
-
-     if (remove_index < 0 || remove_index >= task_index)
-     {
+void rebuildTaskArray(int remove_index) {
+    if (remove_index < 0 || remove_index >= task_index) {
         return;
-     }
-
-     for (int i = remove_index; i < task_index - 1; i++) {
-        arr[i] = arr[i + 1];
     }
-     
+
+    for (int i = remove_index; i < task_index - 1; i++) {
+        task_array[i] = task_array[i + 1];
+    }
+
     task_index--;
 }
 
 void removeTask() {
     if (task_index > 0) {
-        rebuildTaskArray(task_array, 3);
-        printf("Task removed.\n");
+        int indexToRemove;
+        printf("Enter the index of the task to remove: ");
+        scanf("%d", &indexToRemove);
+
+        if (indexToRemove >= 1 && indexToRemove <= task_index) {
+            rebuildTaskArray(indexToRemove - 1);
+            printf("Task removed.\n");
+        } else {
+            printf("Invalid task index. No task removed.\n");
+        }
     } else {
         printf("No tasks to remove.\n");
     }
