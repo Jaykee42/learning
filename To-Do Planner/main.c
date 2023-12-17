@@ -29,6 +29,7 @@ void rebuildTaskArray(int remove_index) {
 
     for (int i = remove_index; i < task_index - 1; i++) {
         task_array[i] = task_array[i + 1];
+        task_array[i].index = i + 1;
     }
 
     task_index--;
