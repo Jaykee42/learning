@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 
 int main(int argc, char *argv[]) {
 
     FILE *file_pointer;
-    char input;
+    char input[90];
 
     if(argc!=2) {
         printf("Error: Please input a file name");
@@ -17,11 +18,13 @@ int main(int argc, char *argv[]) {
     }
 
     do {
-        input = getchar();
-        putc(input, file_pointer);
-    } while (input!='$');
+        printf("Enter a string: ");
+        gets(input);
+        strcat(input, "\n");
+        fputs(input, file_pointer);
+    } while (*input!='\n');
 
-    fclose(file_pointer);
+    
 
     return 0;
 }
