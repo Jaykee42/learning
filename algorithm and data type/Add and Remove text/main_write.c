@@ -2,16 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#define DEFAULT_FILE_NAME "test.txt"
+#define DEFAULT_FILE_NAME "mainfile.txt"
 
-int main(int argc, char *argv[]) {
+int main() {
 
     FILE *file_pointer;
     char input[90];
 
-    char *filename = (argc == 2) ? argv[1] : DEFAULT_FILE_NAME;
-
-    if ((file_pointer = fopen(filename, "w")) == NULL) {
+    if ((file_pointer = fopen(DEFAULT_FILE_NAME, "w")) == NULL) {
         printf("Error while opening the file\n");
         exit(1);
     }
