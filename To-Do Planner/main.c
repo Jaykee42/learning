@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define MAX_TASKS 10000
+#define DEFAULT_FILE_NAME "mainfile.txt"
 
 struct task {
     int index;
@@ -11,15 +14,24 @@ struct task task_array[MAX_TASKS];
 int task_index = 0;
 
 void addTask() {
-    if (task_index < MAX_TASKS) {
-        printf("Enter new task name: \n");
-        scanf("%s", task_array[task_index].name);
-        task_array[task_index].index = task_index + 1;
-        task_index++;
-        printf("Task added!\n");
-    } else {
-        printf("Task limit reached. Can't add more tasks.\n");
+    
+    FILE *file_pointer;
+    char input[90];
+
+    if ((file_pointer = fopen(DEFAULT_FILE_NAME, "w")) == NULL) {
+        printf("Error while opening the file\n");
+        exit(1);
     }
+
+    do {
+        printf("Enter a string: ");
+        fgets(input, sizeof(input), stdin);
+        fputs(input, file_pointer);
+    } while (*input != '\n');
+
+    fclose(file_pointer);
+
+    return 0;
 }
 
 void rebuildTaskArray(int remove_index) {
