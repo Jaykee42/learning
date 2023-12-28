@@ -65,14 +65,19 @@ void removeTask() {
 }
 
 void showTasks() {
-    if (task_index == 0) {
-        printf("Task list is empty\n");
-    } else {
-        printf("List of tasks:\n");
-        for (int i = 0; i < task_index; i++) {
-            printf("Task %d: %s\n", task_array[i].index, task_array[i].name);
-        }
+    
+    FILE *filepointer;
+    char string[80];
+
+    if ((filepointer=fopen("mainfile.txt", "r"))==NULL) {
+        printf("Error while open file\n");
+        exit(1);
     }
+
+    fscanf(filepointer, "%s", string);
+    fprintf(stdout, "%s", string);
+
+    return 0;
 }
 
 int main() {
