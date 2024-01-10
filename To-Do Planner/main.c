@@ -25,15 +25,18 @@ void addTask() {
         exit(1);
     }
 
-    do {
-        printf("Enter a task name: ");
-        fgets(input, sizeof(input), stdin);
-        // Remove newline character if present
-        input[strcspn(input, "\n")] = '\0';
-        fprintf(file_pointer, "%s\n", input);
-    } while (*input != '\n');
+    printf("Enter a task name: ");
+    fgets(input, sizeof(input), stdin);
+
+    // Remove newline character if present
+    input[strcspn(input, "\n")] = '\0';
+
+    fprintf(file_pointer, "%s\n", input);
 
     fclose(file_pointer);
+
+    // Update task_array
+    strcpy(task_array[task_index++].name, input);
 }
 
 // Function to remove a task
@@ -68,7 +71,8 @@ void showTasks() {
     }
 
     printf("Tasks:\n");
-    while (fgets(string, sizeof(string), filepointer) != NULL) {
+    task_index = 0;  // Reset task_index
+    while (fgets(string, sizeof(string), filepointer) != NULL && task_index < MAX_TASKS) {
         printf("%s", string);
         // Copy task to task_array
         strcpy(task_array[task_index++].name, string);
@@ -86,7 +90,9 @@ int main() {
                "s - remove;\n"
                "d - show tasks;\n"
                "0 - exit.\n");
-        scanf(" %c", &input);
+
+        // Use getchar() to handle input
+        input = getchar();
 
         switch (input) {
         case 'a':
@@ -104,6 +110,9 @@ int main() {
             printf("Invalid choice. Try again.\n");
             break;
         }
+
+        // Consume the newline character left in the input buffer
+        while (getchar() != '\n');
     }
 
     return 0;
