@@ -14,24 +14,34 @@ struct task task_array[MAX_TASKS];
 int task_index = 0;
 
 void addTask() {
-    
     FILE *file_pointer;
     char input[90];
 
-    if ((file_pointer = fopen(DEFAULT_FILE_NAME, "w")) == NULL) {
+    if ((file_pointer = fopen(DEFAULT_FILE_NAME, "a")) == NULL) {
         printf("Error while opening the file\n");
         exit(1);
     }
 
-    do {
-        printf("Enter a string: ");
-        fgets(input, sizeof(input), stdin);
-        fputs(input, file_pointer);
-    } while (*input != '\n');
+    while (1) {
+        printf("Enter a task: ");
+        if (fgets(input, sizeof(input), stdin) == NULL) {
+            break;
+        }
+
+        input[strcspn(input, "\n")] = '\0';
+
+        if (input[0] == '\0') {
+            break;
+        }
+
+        fprintf(file_pointer, "%s\n", input);
+
+        // Очистка буфера ввода
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
 
     fclose(file_pointer);
-
-    return 0;
 }
 
 void rebuildTaskArray(int remove_index) {
@@ -59,6 +69,10 @@ void removeTask() {
         } else {
             printf("Invalid task index. No task removed.\n");
         }
+
+        // Очистка буфера ввода
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
     } else {
         printf("No tasks to remove.\n");
     }
@@ -81,14 +95,13 @@ int main() {
     while (input != '0') {
         printf("Enter the action: \na - add task;\ns - remove;\nd - show tasks;\n0 - exit. ");
         scanf(" %c", &input);
+
         switch (input) {
         case 'a':
             addTask();
-            showTasks();
             break;
         case 's':
             removeTask();
-            showTasks();
             break;
         case 'd':
             showTasks();
@@ -99,6 +112,10 @@ int main() {
             printf("Invalid choice. Try again.\n");
             break;
         }
+
+        // Очистка буфера ввода
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
     }
 
     return 0;
