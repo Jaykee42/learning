@@ -25,18 +25,28 @@ void addTask() {
         exit(1);
     }
 
-    printf("Enter a task name: ");
-    fgets(input, sizeof(input), stdin);
-
-    // Remove newline character if present
-    input[strcspn(input, "\n")] = '\0';
-
-    fprintf(file_pointer, "%s\n", input);
+    do {
+        printf("Enter a string: ");
+        fgets(input, sizeof(input), stdin);
+        fputs(input, file_pointer);
+    } while (*input != '\n');
 
     fclose(file_pointer);
 
-    // Update task_array
-    strcpy(task_array[task_index++].name, input);
+    return 0;
+}
+
+void rebuildTaskArray(int remove_index) {
+    if (remove_index < 0 || remove_index >= task_index) {
+        return;
+    }
+
+    for (int i = remove_index; i < task_index - 1; i++) {
+        task_array[i] = task_array[i + 1];
+        task_array[i].index = i + 1;
+    }
+
+    task_index--;
 }
 
 // Function to remove a task
@@ -55,6 +65,10 @@ void removeTask() {
         } else {
             printf("Invalid task index. No task removed.\n");
         }
+
+        // Очистка буфера ввода
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
     } else {
         printf("No tasks to remove.\n");
     }
@@ -84,16 +98,9 @@ void showTasks() {
 int main() {
     char input;
 
-    while (1) {
-        printf("Enter the action:\n"
-               "a - add task;\n"
-               "s - remove;\n"
-               "d - show tasks;\n"
-               "0 - exit.\n");
-
-        // Use getchar() to handle input
-        input = getchar();
-
+    while (input != '0') {
+        printf("Enter the action: \na - add task;\ns - remove;\nd - show tasks;\n0 - exit. ");
+        scanf(" %c", &input);
         switch (input) {
         case 'a':
             addTask();
@@ -110,9 +117,6 @@ int main() {
             printf("Invalid choice. Try again.\n");
             break;
         }
-
-        // Consume the newline character left in the input buffer
-        while (getchar() != '\n');
     }
 
     return 0;
