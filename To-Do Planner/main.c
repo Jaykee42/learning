@@ -6,60 +6,63 @@
 #define DEFAULT_FILE_NAME "mainfile.txt"
 #define MAX_STRING_SIZE 80
 
+int numberOfTaskInArray;
+
 // Struct for a task
 struct task {
     char name[MAX_STRING_SIZE];
+    int taskIndex;
 };
 
 // Array to store tasks
-struct task task_array[MAX_TASKS];
-int task_index = 0;
+struct task allTaskArray[MAX_TASKS];
+
 
 // Function to add a task
 void addTask() {
-    FILE *file_pointer;
-    char input[MAX_STRING_SIZE];
+    FILE *mainFilePointer;
+    char nameOfNewTask[MAX_STRING_SIZE];
 
-    if ((file_pointer = fopen(DEFAULT_FILE_NAME, "a")) == NULL) {
+    if ((mainFilePointer = fopen(DEFAULT_FILE_NAME, "a")) == NULL) {
         printf("Error while opening the file\n");
         exit(1);
     }
 
     do {
-        printf("Enter a string: ");
-        fgets(input, sizeof(input), stdin);
-        fputs(input, file_pointer);
-    } while (*input != '\n');
+        printf("Enter a task name: ");
+        fgets(nameOfNewTask, sizeof(nameOfNewTask), stdin);
+        fputs(nameOfNewTask, mainFilePointer);
+    } while (*nameOfNewTask != '9');
 
-    fclose(file_pointer);
+    fclose(mainFilePointer);
 
-    return 0;
+    return;
 }
 
 void rebuildTaskArray(int remove_index) {
-    if (remove_index < 0 || remove_index >= task_index) {
+    if (remove_index < 0 || remove_index >= numberOfTaskInArray) {
         return;
     }
 
-    for (int i = remove_index; i < task_index - 1; i++) {
-        task_array[i] = task_array[i + 1];
+    for (int i = remove_index; i < numberOfTaskInArray - 1; i++) {
+        allTaskArray[i] = allTaskArray[i + 1];
     }
 
-    task_index--;
+    numberOfTaskInArray--;
 }
 
 // Function to remove a task
 void removeTask() {
-    if (task_index > 0) {
+    if (numberOfTaskInArray > 0) {
         int indexToRemove;
         printf("Enter the index of the task to remove: ");
         scanf("%d", &indexToRemove);
 
-        if (indexToRemove >= 1 && indexToRemove <= task_index) {
-            for (int i = indexToRemove - 1; i < task_index - 1; i++) {
-                strcpy(task_array[i].name, task_array[i + 1].name);
+        if (indexToRemove >= 1 && indexToRemove <= numberOfTaskInArray) {
+            for (int i = indexToRemove - 1; i < numberOfTaskInArray - 1; i++) {
+                strcpy(allTaskArray[i].name, allTaskArray[i + 1].name);
             }
-            task_index--;
+            numberOfTaskInArray--;
             printf("Task removed.\n");
         } else {
             printf("Invalid task index. No task removed.\n");
@@ -84,23 +87,23 @@ void showTasks() {
     }
 
     printf("Tasks:\n");
-    task_index = 0;  // Reset task_index
-    while (fgets(string, sizeof(string), filepointer) != NULL && task_index < MAX_TASKS) {
+    numberOfTaskInArray = 0;  // Reset taskIndex
+    while (fgets(string, sizeof(string), filepointer) != NULL && numberOfTaskInArray < MAX_TASKS) {
         printf("%s", string);
-        // Copy task to task_array
-        strcpy(task_array[task_index++].name, string);
+        // Copy task to allTaskArray
+        strcpy(allTaskArray[numberOfTaskInArray++].name, string);
     }
 
     fclose(filepointer);
 }
 
 int main() {
-    char input;
+    char nameOfNewTask;
 
-    while (input != '0') {
+    while (nameOfNewTask != '0') {
         printf("Enter the action: \na - add task;\ns - remove;\nd - show tasks;\n0 - exit. ");
-        scanf(" %c", &input);
-        switch (input) {
+        scanf(" %c", &nameOfNewTask);
+        switch (nameOfNewTask) {
         case 'a':
             addTask();
             break;
