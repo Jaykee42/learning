@@ -32,7 +32,7 @@ void addTask() {
         printf("Enter a task name: ");
         fgets(nameOfNewTask, sizeof(nameOfNewTask), stdin);
         fputs(nameOfNewTask, mainFilePointer);
-    } while (*nameOfNewTask != '9');
+    } while (*nameOfNewTask != '\n');
 
     fclose(mainFilePointer);
 
