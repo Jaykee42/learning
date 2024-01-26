@@ -28,6 +28,8 @@ void addTask() {
     do {
         printf("Enter a task name: ");
         fgets(nameOfNewTask, sizeof(nameOfNewTask), stdin);
+        numberOfTaskInArray++;
+        
         fputs(nameOfNewTask, mainFilePointer);
         
     } while (nameOfNewTask[0] == '\n');
