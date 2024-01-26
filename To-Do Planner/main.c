@@ -28,10 +28,10 @@ void addTask() {
     do {
         printf("Enter a task name: ");
         fgets(nameOfNewTask, sizeof(nameOfNewTask), stdin);
+        fputs(nameOfNewTask, mainFilePointer);
+        
     } while (nameOfNewTask[0] == '\n');
-
-    fputs(nameOfNewTask, mainFilePointer);
-    fclose(mainFilePointer);
+        fclose(mainFilePointer);
 }
 
 // Function to remove a task
