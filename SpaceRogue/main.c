@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define GAME_FIELD_X 40
 #define GAME_FIELD_Y 20
@@ -25,7 +26,37 @@ void printGameField() {
     }
 }
 
+void mainHeroMovement() {
+
+    char playerInput;
+    playerInput = getch();
+
+    switch (playerInput)
+    {
+    case 'a':
+        MainHero.x--;
+        break;
+    case 'd':
+        MainHero.x++;
+    case 's':
+        MainHero.y--;
+    case 'w':
+        MainHero.y++;
+    
+    default:
+        break;
+    }
+    
+}
+
 int main() {
-    printGameField();
+    int test = 1;
+    while (test)
+    {
+        printGameField();
+        mainHeroMovement();
+        printGameField();
+    }
+    
     return 0;
 }
