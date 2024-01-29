@@ -1,19 +1,25 @@
 #include <stdio.h>
 
+#define GAME_FIELD_X 40
+#define GAME_FIELD_Y 20
 
+struct character {
+    int x;
+    int y;
+};
 
-#define SCREEN_WIDTH 20
-#define SCREEN_HEIGHT 40
-
+struct character MainHero = {20, 10};
 
 void printGameField() {
-
-    for (int x = 0; x < SCREEN_WIDTH; x++) {
-        for (int y = 0; y < SCREEN_HEIGHT; y++){
-            if (x == 0 || x == SCREEN_WIDTH - 1 || y == 0 || y == SCREEN_HEIGHT - 1) {
+    for (int y = 0; y < GAME_FIELD_Y; y++) {
+        for (int x = 0; x < GAME_FIELD_X; x++) {
+            if (x == 0 || x == GAME_FIELD_X - 1 || y == 0 || y == GAME_FIELD_Y - 1) {
                 printf("#");
+            } else if (x == MainHero.x && y == MainHero.y) {
+                printf("H");
+            } else {
+                printf(" ");
             }
-            else printf(" ");
         }
         printf("\n");
     }
@@ -21,6 +27,5 @@ void printGameField() {
 
 int main() {
     printGameField();
-    
     return 0;
 }
