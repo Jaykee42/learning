@@ -39,9 +39,9 @@ void mainHeroMovement() {
     case 'd':
         MainHero.x++;
     case 's':
-        MainHero.y--;
-    case 'w':
         MainHero.y++;
+    case 'w':
+        MainHero.y--;
     
     default:
         break;
@@ -55,7 +55,6 @@ int main() {
     {
         printGameField();
         mainHeroMovement();
-        printGameField();
     }
     
     return 0;
