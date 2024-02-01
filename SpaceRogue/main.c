@@ -40,6 +40,13 @@ void mainHeroMovement() {
     char playerInput;
     playerInput = getch();
 
+    if (MainHero.x == Enemy.x && MainHero.y == Enemy.y)
+    {
+        printf("You lose!");
+        test = 0;
+    }
+    
+
     switch (playerInput)
     {
     case 'a':
