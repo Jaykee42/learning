@@ -16,6 +16,28 @@ int test = 1;
 struct character MainHero = {GAME_FIELD_X/2, GAME_FIELD_Y/2, 'H'};
 struct character Enemy = {GAME_FIELD_X - 3, GAME_FIELD_Y - 3, 'E'};
 
+void battleWithEnemy() {
+    printf("What do you want to do?\n");
+    char playerBattleInput = getch();
+
+    switch (playerBattleInput)
+    {
+    case 'a':
+        printf("Attack!\n");
+        getch();
+        break;
+    
+    case 'd':
+        printf("Defense!\n");
+        getch();
+        break;
+    
+    case '0':
+        test = 0;
+    }
+}
+
+
 void printGameField() {
     system("cls");
 
@@ -42,8 +64,7 @@ void mainHeroMovement() {
 
     if (MainHero.x == Enemy.x && MainHero.y == Enemy.y)
     {
-        printf("You lose!");
-        test = 0;
+        battleWithEnemy();
     }
     
 
