@@ -8,13 +8,14 @@
 struct character {
     int x;
     int y;
+    int health;
     char name;
 };
 
 int test = 1;
 
-struct character MainHero = {GAME_FIELD_X/2, GAME_FIELD_Y/2, 'H'};
-struct character Enemy = {GAME_FIELD_X - 3, GAME_FIELD_Y - 3, 'E'};
+struct character MainHero = {GAME_FIELD_X/2, GAME_FIELD_Y/2, 100, 'H'};
+struct character Enemy = {GAME_FIELD_X - 3, GAME_FIELD_Y - 3, 100, 'E'};
 
 void battleWithEnemy() {
     printf("What do you want to do?\n");
@@ -55,6 +56,7 @@ void printGameField() {
         }
         printf("\n");
     }
+    printf("%d HP\n", MainHero.health);
 }
 
 void mainHeroMovement() {
