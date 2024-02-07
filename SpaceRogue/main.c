@@ -25,6 +25,7 @@ void battleWithEnemy() {
     {
     case 'a':
         printf("Attack!\n");
+        Enemy.health--;
         getch();
         break;
     
@@ -56,7 +57,7 @@ void printGameField() {
         }
         printf("\n");
     }
-    printf("%d HP\n", MainHero.health);
+    printf("%d HP        %d Enemy\n", MainHero.health, Enemy.health);
 }
 
 void mainHeroMovement() {
