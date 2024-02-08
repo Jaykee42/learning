@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <conio.h>
 
-#define GAME_FIELD_X 20
-#define GAME_FIELD_Y 10
+#define GAME_FIELD_X 25
+#define GAME_FIELD_Y 15
 
 struct character {
     int x;
@@ -12,7 +12,7 @@ struct character {
     char name;
 };
 
-int test = 1;
+int gameStatus = 1;
 
 struct character MainHero = {GAME_FIELD_X/2, GAME_FIELD_Y/2, 100, 'H'};
 struct character Enemy = {GAME_FIELD_X - 3, GAME_FIELD_Y - 3, 100, 'E'};
@@ -35,7 +35,7 @@ void battleWithEnemy() {
         break;
     
     case '0':
-        test = 0;
+        gameStatus = 0;
     }
 }
 
@@ -86,7 +86,7 @@ void mainHeroMovement() {
         MainHero.y--;
         break;
     case '0':
-        test = 0;
+        gameStatus = 0;
         break;
     }
     
@@ -94,7 +94,7 @@ void mainHeroMovement() {
 
 int main() {
     
-    while (test)
+    while (gameStatus)
     {
         printGameField();
         mainHeroMovement();
