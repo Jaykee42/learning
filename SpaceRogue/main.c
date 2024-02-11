@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <conio.h>
 
-#define GAME_FIELD_X 25
-#define GAME_FIELD_Y 15
+
+
+#define GAME_FIELD_X 20
+#define GAME_FIELD_Y 10
 
 struct character {
     int x;
@@ -65,9 +67,10 @@ void mainHeroMovement() {
     char playerInput;
     playerInput = getch();
 
-    if (MainHero.x == Enemy.x && MainHero.y == Enemy.y)
-    {
-        battleWithEnemy();
+    while (MainHero.x == Enemy.x && MainHero.y == Enemy.y) {
+      
+      battleWithEnemy();
+      
     }
     
 
