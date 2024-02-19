@@ -1,8 +1,9 @@
 #include <ncurses.h>
 
 int main() {
-	initscr();
-	printw("Hello world!");
+	initsc();
+	mvaddch(22, 10, '@');
 	getch();
+	endwin();
 	return 0;
 }
