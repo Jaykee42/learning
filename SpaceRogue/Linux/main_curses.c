@@ -12,6 +12,7 @@ int main() {
 	
 	
 	do {
+		clear();
 		if (c == KEY_UP) y--;
 		else if (c == KEY_DOWN) y++;
 		else if (c == KEY_LEFT) x--;
