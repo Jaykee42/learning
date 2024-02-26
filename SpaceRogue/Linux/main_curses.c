@@ -10,12 +10,23 @@ int main() {
 	keypad(stdscr, 1); //allow arrows
 	curs_set(0);
 	getmaxyx(stdscr, rows, cols);
+	char map[cols][rows];
 	
 	do {
-		for (int yy = 0; yy <= rows; yy++)
-			for (int xx = 0; xx <= cols; xx++)
-				mvaddch(yy, xx, '#');
-		printw("rows - %d, cols - %d", rows, cols);
+		for (int yy = 0; yy <= rows; yy++) {
+			for (int xx = 0; xx <= cols; xx++) {
+				map[yy][xx] = '#';
+				mvaddch(yy, xx, '#'); 
+			} 
+		}
+		
+		for (int yy = 11; yy <= rows /2; yy++) {
+			for (int xx = 11; xx <= cols /2; xx++) {
+				map[yy][xx] = ' ';
+				mvaddch(yy, xx, ' '); 
+			}
+		}
+			
 		if (c == KEY_UP) y--;
 		else if (c == KEY_DOWN) y++;
 		else if (c == KEY_LEFT) x--;
