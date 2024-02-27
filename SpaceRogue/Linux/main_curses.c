@@ -27,7 +27,7 @@ int main() {
 			}
 		}
 			
-		if (c == KEY_UP) y--;
+		if (c == KEY_UP && map[y-1][x]) y--;
 		else if (c == KEY_DOWN) y++;
 		else if (c == KEY_LEFT) x--;
 		else if (c == KEY_RIGHT) x++;
