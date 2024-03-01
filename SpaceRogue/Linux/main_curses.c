@@ -1,16 +1,31 @@
 #include <ncurses.h>
 
-int main() {
-	int c;
-	int y = 11, x = 11;
-	int cols, rows;
+
+int SCREEN_X = 1;	
+int SCREEN_Y = 1;
+int c;
+int y = 11, x = 11;
+
+	
+char map[SCREEN_Y][SCREEN_X];
+
+void initialization() {
 	
 	initscr();
 	noecho();
 	keypad(stdscr, 1); //allow arrows
 	curs_set(0);
-	getmaxyx(stdscr, rows, cols);
-	char map[cols][rows];
+	getmaxyx(stdscr, SCREEN_X, SCREEN_Y);
+	
+}
+
+
+int main() {
+	int c;
+	int y = 11, x = 11;
+	int cols, rows;
+	
+	char map[SCREEN_Y][SCREEN_X];
 	
 	do {
 		for (int yy = 0; yy <= rows; yy++) {
