@@ -3,10 +3,15 @@
 
 void printPlayField() {
 	
-	for (int x = 0; x < 10; x++) {
-		printw("\n#");
-		for (int y = 0; y < 20; y++) {
-			printw("#");
+	for (int x = 0; x < 100; x++) {
+		for (int y = 0; y < 50; y++) {
+			mvaddch(y, x, '#');
+		}
+	}
+	
+	for (int x = 10; x < 50; x++) {
+		for (int y = 10; y < 25; y++) {
+			mvaddch(y, x, ' ');
 		}
 	}
 }
@@ -35,6 +40,7 @@ int main () {
 	noecho();
 	
 	printPlayField();
+	playerMovement();
 	
 	ch = getch();
 	
