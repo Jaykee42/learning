@@ -35,7 +35,6 @@ int main () {
 	int ch;
 	
 	initscr(); // init ncurses
-	raw();
 	keypad(stdscr, TRUE);
 	noecho();
 	
