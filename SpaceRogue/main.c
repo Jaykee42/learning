@@ -1,11 +1,14 @@
 #include <ncurses.h>
-
+int playerX = 10;
 
 void printPlayField() {
 	
 	for (int x = 0; x < 100; x++) {
 		for (int y = 0; y < 50; y++) {
 			mvaddch(y, x, '#');
+			if (playerX == x) {
+				mvaddch(x, y, '@');
+			}
 		}
 	}
 	
