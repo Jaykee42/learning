@@ -1,14 +1,16 @@
 #include <ncurses.h>
-int playerX = 10;
+int playerX = 5;
+int playerY = 5;
 
 void printPlayField() {
 	
 	for (int x = 0; x < 100; x++) {
 		for (int y = 0; y < 50; y++) {
 			mvaddch(y, x, '#');
-			if (playerX == x) {
-				mvaddch(x, y, '@');
+			if (playerX == x && playerY == y) {
+				mvaddch(y, x, '@');
 			}
+			
 		}
 	}
 	
@@ -29,7 +31,7 @@ void playerMovement() {
 	switch (inputPlayerMove) {
 		
 		case 'w':
-		printw("@");
+		playerY--;
 		break;
 	}
 	
@@ -43,7 +45,7 @@ int main () {
 	
 	printPlayField();
 	playerMovement();
-	
+	printPlayField();
 	ch = getch();
 	
 	refresh(); //print it on to the real screen
