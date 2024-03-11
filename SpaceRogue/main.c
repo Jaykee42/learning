@@ -1,24 +1,26 @@
 #include <ncurses.h>
-int playerX = 5;
-int playerY = 5;
+int playerX = 11;
+int playerY = 11;
+bool GameOver = true;
 
 void printPlayField() {
-	
-	for (int x = 0; x < 100; x++) {
-		for (int y = 0; y < 50; y++) {
+	int x,y;
+	for (x = 0; x < 100; x++) {
+		for (y = 0; y < 50; y++) {
 			mvaddch(y, x, '#');
-			if (playerX == x && playerY == y) {
-				mvaddch(y, x, '@');
-			}
 			
 		}
 	}
 	
-	for (int x = 10; x < 50; x++) {
-		for (int y = 10; y < 25; y++) {
+	for (x = 10; x < 50; x++) {
+		for (y = 10; y < 25; y++) {
 			mvaddch(y, x, ' ');
+			if (playerX == x && playerY == y) {
+				mvaddch(y, x, '@');
+			}
 		}
 	}
+	
 }
 
 
@@ -31,8 +33,21 @@ void playerMovement() {
 	switch (inputPlayerMove) {
 		
 		case 'w':
-		playerY--;
-		break;
+			playerY--;
+			break;
+		
+		case 's':
+			playerY++;
+			break;
+		case 'a':
+			playerX--;
+			break;
+		case 'd':
+			playerX++;
+			break;
+		case '0':
+			GameOver = false;
+			break;
 	}
 	
 }
@@ -43,10 +58,13 @@ int main () {
 	keypad(stdscr, TRUE);
 	noecho();
 	
-	printPlayField();
-	playerMovement();
-	printPlayField();
-	ch = getch();
+	while(GameOver) {
+		
+		printPlayField();
+		playerMovement();
+	
+	}
+	
 	
 	refresh(); //print it on to the real screen
 	getch();
