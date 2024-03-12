@@ -26,23 +26,23 @@ void printPlayField() {
 
 void playerMovement() {
 	
-	char inputPlayerMove;
+	int inputPlayerMove;
 	
 	inputPlayerMove = getch();
 	
 	switch (inputPlayerMove) {
 		
-		case 'w':
+		case KEY_UP:
 			playerY--;
 			break;
 		
-		case 's':
+		case KEY_DOWN:
 			playerY++;
 			break;
-		case 'a':
+		case KEY_LEFT:
 			playerX--;
 			break;
-		case 'd':
+		case KEY_RIGHT:
 			playerX++;
 			break;
 		case '0':
@@ -57,6 +57,7 @@ int main () {
 	initscr(); // init ncurses
 	keypad(stdscr, TRUE);
 	noecho();
+	curs_set(0);
 	
 	while(GameOver) {
 		
