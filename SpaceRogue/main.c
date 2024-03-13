@@ -15,12 +15,9 @@ void printPlayField() {
 	for (x = 10; x < 50; x++) {
 		for (y = 10; y < 25; y++) {
 			mvaddch(y, x, ' ');
-			if (playerX == x && playerY == y) {
-				mvaddch(y, x, '@');
-			}
 		}
 	}
-	
+	mvaddch(playerY, playerX, '@');
 }
 
 
