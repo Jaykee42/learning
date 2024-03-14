@@ -1,18 +1,25 @@
 #include <ncurses.h>
+
 int playerX = 11;
 int playerY = 11;
 bool GameOver = true;
 
+
 void printPlayField() {
+	int screenRows;
+	int screenColumns;
+	getmaxyx(stdscr, screenRows, screenColumns);
+	char gameField[screenRows][screenColumns];
 	int x,y;
-	for (x = 0; x < 100; x++) {
+	
+	for (x = 0; x < screenColumns; x++) {
 		for (y = 0; y < 50; y++) {
 			mvaddch(y, x, '#');
 			
 		}
 	}
 	
-	for (x = 10; x < 50; x++) {
+	for (x = 10; x < screenRows; x++) {
 		for (y = 10; y < 25; y++) {
 			mvaddch(y, x, ' ');
 		}
@@ -55,6 +62,7 @@ int main () {
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
+	
 	
 	while(GameOver) {
 		
