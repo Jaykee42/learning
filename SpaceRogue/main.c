@@ -1,29 +1,31 @@
 #include <ncurses.h>
 
-int playerX = 11;
-int playerY = 11;
+int playerX;
+int playerY;
 bool GameOver = true;
+int screenRows;
+int screenColumns;
 
 
 void printPlayField() {
-	int screenRows;
-	int screenColumns;
-	getmaxyx(stdscr, screenRows, screenColumns);
+	
+	
 	char gameField[screenRows][screenColumns];
 	int x,y;
 	
 	for (x = 0; x < screenColumns; x++) {
-		for (y = 0; y < 50; y++) {
+		for (y = 0; y < screenRows; y++) {
 			mvaddch(y, x, '#');
 			
 		}
 	}
 	
-	for (x = 10; x < screenRows; x++) {
-		for (y = 10; y < 25; y++) {
+	for (x = 10; x < screenColumns/2; x++) {
+		for (y = 10; y < screenRows/2; y++) {
 			mvaddch(y, x, ' ');
 		}
 	}
+	
 	mvaddch(playerY, playerX, '@');
 }
 
@@ -31,6 +33,7 @@ void printPlayField() {
 void playerMovement() {
 	
 	int inputPlayerMove;
+	
 	
 	inputPlayerMove = getch();
 	
@@ -55,25 +58,30 @@ void playerMovement() {
 	}
 	
 }
-int main () {
-	int ch;
+
+int gameInitialisation() {
 	
 	initscr(); // init ncurses
+	getmaxyx(stdscr, screenRows, screenColumns);
+	playerX = screenColumns/2;
+	playerY = screenRows/2;
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
+}
+int main () {
 	
+	gameInitialisation();
 	
 	while(GameOver) {
 		
 		printPlayField();
 		playerMovement();
-	
+		
 	}
 	
 	
 	refresh(); //print it on to the real screen
-	getch();
 	endwin(); //end curses mode
 	
 	return 0;
