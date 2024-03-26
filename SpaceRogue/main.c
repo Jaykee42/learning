@@ -20,8 +20,8 @@ void printPlayField() {
 		}
 	}
 	
-	for (x = 10; x < screenColumns/2; x++) {
-		for (y = 10; y < screenRows/2; y++) {
+	for (x = 2; x < screenColumns/3; x++) {
+		for (y = 1; y < screenRows/3; y++) {
 			mvaddch(y, x, ' ');
 		}
 	}
