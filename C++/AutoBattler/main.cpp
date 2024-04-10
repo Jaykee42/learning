@@ -1,30 +1,34 @@
 #include <iostream>
 using namespace std;
 
+void mainMenu() {
+    int playerInput;
+    cout << "Welcome to game!\n";
+    cout << "1.New Game\n";
+    cout << "2.Continue\n";
+    cout << "3.Settings\n";
+    cout << "4.Quit\n";
+
+    cin >> playerInput;
+
+    switch (playerInput)
+    {
+    case 1:
+        cout << "New Game!\n";
+        break;
+    
+    default:
+        break;
+    }
+
+}
+
 class Hero {
     public:
     string name;
     int hitPoints;
     int basicAttack;
     int basicArmor;
-
-    /*string setName (string Name) {
-        name = Name;
-    }
-
-    int setHP (int HP) {
-        hitPoints = HP;
-    }
-
-    int setBasicAttack (int BasicAttack) {
-        basicAttack = BasicAttack;
-    }
-
-    int setBasicArmor (int BasicArmor) {
-        basicArmor = BasicArmor;
-    }*/
-    
-
 };
 
 int main() {
@@ -34,5 +38,5 @@ int main() {
     James.basicAttack = 12;
     James.hitPoints = 30;
 
-    cout << "James basic armor is " << James.basicArmor << endl;
+    mainMenu();
 }
