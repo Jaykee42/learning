@@ -1,6 +1,13 @@
 #include <iostream>
 using namespace std;
 
+string playerCharacterName;
+
+
+void newGameStart() {
+    cout << "Welcome to new game!\nPlease enter your character name:\n";
+    cin >> playerCharacterName;
+}
 void mainMenu() {
     int playerInput;
     cout << "Welcome to game!\n";
@@ -15,9 +22,18 @@ void mainMenu() {
     {
     case 1:
         cout << "New Game!\n";
+        newGameStart();
         break;
+    case 2: 
+        cout << "Continue!\n";
+        break;
+    case 3:
+        cout << "Setting!\n";
+    case 4:
+        cout << "Qiut!\n";
     
     default:
+        cout << "Invalid option!\n";
         break;
     }
 
@@ -32,11 +48,14 @@ class Hero {
 };
 
 int main() {
-    Hero James;
-    James.name = "James Cock";
-    James.basicArmor = 13;
-    James.basicAttack = 12;
-    James.hitPoints = 30;
-
     mainMenu();
+    Hero Player;
+    Player.name = playerCharacterName;
+    Player.basicArmor = 13;
+    Player.basicAttack = 12;
+    Player.hitPoints = 30;
+    
+    
+
+    cout << "Your name is " << Player.name << endl;
 }
