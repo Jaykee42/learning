@@ -3,7 +3,24 @@ using namespace std;
 
 string playerCharacterName;
 
-
+void printGameField () {
+    int screenX = 10; 
+    int screenY = 10;
+    for (int x = 0; x < screenX; ++x) {
+        for (int y = 0; y < screenY; ++y)
+        {
+            if (x == 0 && x == screenX - 1 && y == 0 && y == screenY - 1)
+                {
+                cout << "#";
+            }
+            else {
+                cout << " ";
+            }
+            
+        }
+        
+    }
+}
 void newGameStart() {
     cout << "Welcome to new game!\nPlease enter your character name:\n";
     cin >> playerCharacterName;
@@ -58,4 +75,5 @@ int main() {
     
 
     cout << "Your name is " << Player.name << endl;
+    printGameField();
 }
