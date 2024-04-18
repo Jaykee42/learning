@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 string playerCharacterName;
@@ -39,6 +40,7 @@ void printGameField() {
 void newGameStart() {
     cout << "Welcome to new game!\nPlease enter your character name:\n";
     cin >> playerCharacterName;
+    system("clear");
 }
 
 void initialisationSettings() {
@@ -58,6 +60,8 @@ void battleFunc() {
     while (EndBattle) {
         cout << playerCharacterName << ": " << Player.hitPoints << "      " << Scamp.name << ": " << Scamp.hitPoints << endl;
         Player.hitPoints--;
+        system("sleep 2");
+        system("clear");
         if (Player.hitPoints <= 0 || Scamp.hitPoints <= 0)
             EndBattle = false;
     }
@@ -98,4 +102,5 @@ void mainMenu() {
 int main() {
     mainMenu();
     return 0;
+
 }
