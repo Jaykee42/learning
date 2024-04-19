@@ -52,14 +52,19 @@ void initialisationSettings() {
     Scamp.name = "Scamp";
     Scamp.basicArmor = 4;
     Scamp.basicAttack = 5;
-    Scamp.hitPoints = 10;
+    Scamp.hitPoints = 50;
 }
 
 void battleFunc() {
     bool EndBattle = true;
     while (EndBattle) {
+        int playerHit, monsterHit;
+
         cout << playerCharacterName << ": " << Player.hitPoints << "      " << Scamp.name << ": " << Scamp.hitPoints << endl;
-        Player.hitPoints--;
+        playerHit = Player.basicAttack - 2 - Scamp.basicArmor;
+        monsterHit = Scamp.basicAttack + 1 / Player.basicArmor;
+        Player.hitPoints -= monsterHit;
+        Scamp.hitPoints -= playerHit;
         system("sleep 2");
         system("clear");
         if (Player.hitPoints <= 0 || Scamp.hitPoints <= 0)
