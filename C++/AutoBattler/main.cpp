@@ -46,7 +46,7 @@ void newGameStart() {
 void initialisationSettings() {
     Player.name = playerCharacterName;
     Player.basicArmor = 13;
-    Player.basicAttack = 12;
+    Player.basicAttack = 16;
     Player.hitPoints = 30;
 
     Scamp.name = "Scamp";
