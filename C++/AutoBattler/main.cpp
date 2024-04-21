@@ -67,8 +67,8 @@ void battleFunc() {
         Scamp.hitPoints -= playerHit;
         system("sleep 2");
         system("clear");
-        if (Player.hitPoints <= 0 || Scamp.hitPoints <= 0) {
-            cout << "Game Over!\n";
+        if (Player.hitPoints <= 0) {
+            cout << "You died!\n";
             break;
         }
     }
