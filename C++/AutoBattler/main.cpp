@@ -3,6 +3,7 @@
 using namespace std;
 
 string playerCharacterName;
+bool EndBattle = true;
 
 class Hero {
 public:
@@ -56,7 +57,6 @@ void initialisationSettings() {
 }
 
 void battleFunc() {
-    bool EndBattle = true;
     while (EndBattle) {
         int playerHit, monsterHit;
 
@@ -67,8 +67,10 @@ void battleFunc() {
         Scamp.hitPoints -= playerHit;
         system("sleep 2");
         system("clear");
-        if (Player.hitPoints <= 0 || Scamp.hitPoints <= 0)
-            EndBattle = false;
+        if (Player.hitPoints <= 0 || Scamp.hitPoints <= 0) {
+            cout << "Game Over!\n";
+            break;
+        }
     }
 }
 
@@ -97,6 +99,7 @@ void mainMenu() {
         break; // Don't forget to add break statements after each case
     case 4:
         cout << "Quit!\n";
+        EndBattle = false;
         break;
     default:
         cout << "Invalid option!\n";
