@@ -24,19 +24,6 @@ public:
 Hero Player;
 Enemy Scamp;
 
-void printGameField() {
-    int screenX = 10;
-    int screenY = 20;
-    for (int x = 0; x < screenX; x++) {
-        for (int y = 0; y < screenY; y++) {
-            if (x == 1 || x == screenX - 1 || y == 1 || y == screenY - 1)
-                cout << "#";
-            else
-                cout << " ";
-        }
-        cout << endl;
-    }
-}
 
 void newGameStart() {
     cout << "Welcome to new game!\nPlease enter your character name:\n";
@@ -96,7 +83,7 @@ void mainMenu() {
         break;
     case 3:
         cout << "Setting!\n";
-        break; // Don't forget to add break statements after each case
+        break; 
     case 4:
         cout << "Quit!\n";
         EndBattle = false;
