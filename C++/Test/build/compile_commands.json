@@ -1,0 +1,8 @@
+[
+{
+  "directory": "D:/Coding/learning/C++/Test/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DUNICODE -DWXUSINGDLL -D_UNICODE @CMakeFiles/Test.dir/includes_CXX.rsp  -o CMakeFiles\\Test.dir\\scr\\main.cpp.obj -c D:\\Coding\\learning\\C++\\Test\\scr\\main.cpp",
+  "file": "D:/Coding/learning/C++/Test/scr/main.cpp",
+  "output": "CMakeFiles/Test.dir/scr/main.cpp.obj"
+}
+]
