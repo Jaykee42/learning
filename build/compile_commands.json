@@ -1,8 +1,0 @@
-[
-{
-  "directory": "D:/Coding/learning/build",
-  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\Test.dir\\src\\main.cpp.obj -c D:\\Coding\\learning\\C++\\Test\\src\\main.cpp",
-  "file": "D:/Coding/learning/C++/Test/src/main.cpp",
-  "output": "CMakeFiles/Test.dir/src/main.cpp.obj"
-}
-]

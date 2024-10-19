@@ -1,3 +1,0 @@
-D:/Coding/learning/build/CMakeFiles/Test.dir
-D:/Coding/learning/build/CMakeFiles/edit_cache.dir
-D:/Coding/learning/build/CMakeFiles/rebuild_cache.dir
