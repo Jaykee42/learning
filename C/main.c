@@ -1,9 +1,10 @@
-#include <stdio.h> 
+#include <stdio.h>
 
-int main(void) 
+int main(void)
 {
-
-	printf("Hello world\n");
-	return 0;
-
+	for (int i = 0; i < 5; i++) 
+	{
+		printf("%d\n", i);
+	}
 }
+
