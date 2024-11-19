@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int main(void)
+int userInputFunc(void)
 {
-    int userInput;
+     int userInput;
 
     printf("Please, enter a command number: \n");
     scanf("%d", &userInput);
@@ -17,4 +17,11 @@ int main(void)
             break;
 
     }
+
+}
+
+
+int main(void)
+{
+   userInputFunc(); 
 }
