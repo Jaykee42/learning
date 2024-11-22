@@ -2,7 +2,9 @@
 
 int userInputFunc(void)
 {
-     int userInput;
+    int userInput;
+    FILE *main_file = fopen("/home/jaykee/Git_repos/learning/C/to_do_lister/main.file", "w");
+
 
     printf("Please, enter a command number: \n");
     scanf("%d", &userInput);
@@ -10,16 +12,21 @@ int userInputFunc(void)
     switch (userInput) 
     {
         case 1:
-            printf("UserInput - 1");
+            fprintf(main_file, "TEst");
             break;
         case 2:
-            printf("UserInput - 2");
+            fprintf(main_file, "Fuuck!");
             break;
 
     }
 
+           
 }
 
+int userActions(void) 
+{
+    
+}
 
 int main(void)
 {
